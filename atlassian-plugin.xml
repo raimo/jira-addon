@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<atlassian-plugin key="raimo" name="Hello World" plugins-version="2">
+  <plugin-info>
+    <description>Raimo</description>
+    <version>1</version>
+    <vendor name="Raimo" url="https://raimo.example.com" />
+  </plugin-info>
+
+  <remote-plugin-container key="container" display-url="http://localhost:8000">
+  </remote-plugin-container>
+
+  <general-page key="general" name="Greeting" url="/helloworld.html">
+  </general-page>
+</atlassian-plugin>
