@@ -1,4 +1,5 @@
 Run
 ===
 
-    python -m SimpleHTTPServer 8000
+bundle
+bundle exec run ruby app.rb # listens http://localhost:4567
