@@ -11,4 +11,6 @@
 
   <general-page key="general" name="Greeting" url="/helloworld.html">
   </general-page>
+
+  <webhook key="installed" event="remote_plugin_installed" url="/installed"/>
 </atlassian-plugin>
