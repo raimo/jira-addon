@@ -8,11 +8,6 @@ class MyApp < Sinatra::Base
     "#{request.env['rack.url_scheme']}://#{request.env['HTTP_HOST']}"
   end
 
-  before do
-    request.body.rewind
-    params.merge!(JSON.parse request.body.read)
-  end
-
   get '/' do
     erb :index
   end
@@ -23,7 +18,9 @@ class MyApp < Sinatra::Base
   end
 
   post '/enabled' do
-    ap params
+    request.body.rewind
+    h = JSON.parse request.body.read
+    ap h
   end
   run! if app_file == $0
 end
