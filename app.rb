@@ -23,9 +23,9 @@ class MyApp < Sinatra::Base
     puts 'Getting these back from JIRA'
     ap h
     ap 'Initializing new OAuth::Consumer using oauth gem'
-    consumer = OAuth::Consumer.new(h['clientKey'], h['publicKey'], private_key_file: 'private-key.pem', signature_method: 'RSA-SHA1', site: 'http://localhost:2990')
+    consumer = OAuth::Consumer.new(h['key'], OpenSSL::PKey::RSA.new(IO.read("#{File.dirname(__FILE__)}/private-key.pem")), signature_method: 'RSA-SHA1', site: 'http://localhost:2990')
     puts 'Making "find anything" call.'
-    ap consumer.request(:get, '/jira/rest/api/2/search')
+    ap JSON.parse(consumer.request(:get, '/jira/rest/api/2/search?user_id=admin').body) rescue {}
   end
   run! if app_file == $0
 end
